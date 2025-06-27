@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import Title from '../components/Title';
 import Colors from '../constants/colors';
 
+
+function generateRandomNumber(min, max, exclude ) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    if (randomNumber === exclude) {
+        return generateRandomNumber(min, max, exclude);
+    } else {
+        return randomNumber;
+    }
+}
+
+
+
 function GameScreen() {
+
+    // State to hold the current guess of the opponent
+    const  [ currentGuess, setCurrentGuess ] = useState(generateRandomNumber(1, 100, 0));
+
+
     return (
         <View style={styles.screen}>
             <Title children={"Opponent's Guess"} />
