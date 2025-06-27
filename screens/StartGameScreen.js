@@ -2,6 +2,7 @@ import  {View, TextInput, Button, Alert} from 'react-native'
 import PrimaryButton from '../components/PrimaryButton';
 import { StyleSheet } from 'react-native';
 import { useState } from 'react';
+import Colors from '../constants/colors';
 
 
 
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 16,
     width: '100%',
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.textSecondary,
   },
 });
 
