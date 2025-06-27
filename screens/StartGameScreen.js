@@ -7,7 +7,13 @@ import { StyleSheet } from 'react-native';
 function StartGameScreen() {
   return (
     <View style={styles.container}>
-      <TextInput />
+      <TextInput
+       style={styles.input}
+       maxLength={2}
+       keyboardType='number-pad'
+       autoCapitalize='none'
+       />
+      <View style={styles.buttonContainer}>
        <PrimaryButton
          children="Confirm"
          onPress={() => console.log('Button Pressed')}
@@ -16,6 +22,7 @@ function StartGameScreen() {
             children="Reset"
             onPress={() => console.log('Reset Pressed')}
             />
+      </View>
     </View>
   );
 }
@@ -38,6 +45,22 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 6,
     shadowOpacity: 0.2,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 16,
+  },
+  input: {
+    height: 40,
+    borderColor: '#ced4da',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    marginBottom: 16,
+    width: '100%',
+    backgroundColor: '#ffffff',
   },
 });
 

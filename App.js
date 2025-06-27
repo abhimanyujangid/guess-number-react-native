@@ -1,11 +1,40 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+// App.js
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, ImageBackground } from 'react-native';
 import StartGameScreen from './screens/StartGameScreen';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function App() {
   return (
-    <SafeAreaView >
-       <StartGameScreen />
-     </SafeAreaView>
+    <SafeAreaProvider>
+      <LinearGradient
+        colors={['#f8f9fa', '#a1c4fd']}
+        style={styles.rootOuterContainer}
+      >
+        <ImageBackground 
+        source={require('./assets/image/back.jpg')}
+        style={styles.imageBackground}
+        resizeMode="cover"
+        imageStyle={{ opacity: 0.5 }}>
+          <SafeAreaView style={styles.rootContainer}>
+            <StartGameScreen />
+          </SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </SafeAreaProvider>
   );
 }
 
+const styles = StyleSheet.create({
+  rootOuterContainer: {
+    flex: 1,
+  },
+  rootContainer: {
+    flex: 1,
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
