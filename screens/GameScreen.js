@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import Title from '../components/Title';
+import Title from '../components/Ui/Title';
 import Colors from '../constants/colors';
+import NumberContainer from '../components/Game/NumberContainer';
 
 
 function generateRandomNumber(min, max, exclude ) {
@@ -15,16 +16,19 @@ function generateRandomNumber(min, max, exclude ) {
 
 
 
-function GameScreen() {
+function GameScreen({userNumber, onGameOver}) {
 
     // State to hold the current guess of the opponent
-    const  [ currentGuess, setCurrentGuess ] = useState(generateRandomNumber(1, 100, 0));
+    const initialGuess = generateRandomNumber(1, 100, userNumber);
+    const  [ currentGuess, setCurrentGuess ] = useState(initialGuess);
 
 
     return (
         <View style={styles.screen}>
             <Title children={"Opponent's Guess"} />
-            GUESS
+          <NumberContainer
+          children={currentGuess}
+            />
             <View>
                 <Text>Higher or Lower</Text>
                 <View>
