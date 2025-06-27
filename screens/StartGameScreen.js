@@ -23,11 +23,22 @@ function StartGameScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 24,
+    padding: 16,
+    marginTop: 100,
+    marginHorizontal: 16,
     alignItems: 'center',       
     justifyContent: 'center',
-    },  
+    backgroundColor: '#f8f9fa',
+    borderRadius: 8,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowRadius: 6,
+    shadowOpacity: 0.2,
+  },
 });
 
 export default StartGameScreen;
