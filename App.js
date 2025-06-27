@@ -5,19 +5,29 @@ import StartGameScreen from './screens/StartGameScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import GameScreen from './screens/GameScreen';
+import GameOverScreen from './screens/GameOverScreen';
 
 export default function App() {
 
   const [userNumber, setUserNumber] = useState("");
+  const [gameIsOver, setGameIsOver] = useState(false);
 
   const pickNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber);
   };
 
+  const gameOverHandler = () => {
+    setGameIsOver(true);
+  };
+
   let screen = <StartGameScreen onPickNumber={pickNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />;
+  }
+
+  if (gameIsOver && userNumber) {
+    screen = <GameOverScreen roundsNumber={0} userNumber={userNumber} onRestart={() => {}} />;
   }
 
   return (
