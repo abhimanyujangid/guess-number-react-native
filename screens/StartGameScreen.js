@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 
 
-function StartGameScreen() {
+function StartGameScreen({onPickNumber}) {
   const [enteredValue, setEnteredValue] = useState('');
 
 
@@ -25,6 +25,8 @@ function StartGameScreen() {
       );
       return;
     }
+    onPickNumber(parsedValue);
+    setEnteredValue(''); // Clear the input after confirmation
   }
 
 
